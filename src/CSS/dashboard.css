@@ -1,0 +1,13 @@
+.header {
+  font-family: Titillium;
+  font-size: 29px;
+  font-weight: lighter;
+  background-color: black !important;
+  height: 100px;
+  color: #45b1e7 !important;
+  box-shadow: 5px 8px 10px #888 !important;
+  border-right: 5px solid white;
+}
+.selecComp {
+  width: 40%;
+}
