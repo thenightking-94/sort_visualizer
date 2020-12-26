@@ -26,3 +26,7 @@
   font-family: Titillium;
   src: url("../src/fonts/TitilliumWeb-Light.ttf");
 }
+@font-face {
+  font-family: TitilliumBold;
+  src: url("../src//fonts/TitilliumWeb-Bold.ttf");
+}

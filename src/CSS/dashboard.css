@@ -11,3 +11,17 @@
 .selecComp {
   width: 40%;
 }
+.titles {
+  font-family: TitilliumBold !important;
+  width: 40%;
+  font-size: 20px;
+  text-align: left;
+  color: #45b1e7;
+}
+#paper {
+  background-color: #45b1e7;
+  width: 15px;
+}
+.baseline {
+  align-items: flex-end !important;
+}
