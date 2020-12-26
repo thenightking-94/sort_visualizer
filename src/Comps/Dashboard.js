@@ -29,10 +29,10 @@ const Dashboard = () => {
             <br />
             <div className='flexRow'>
                 <Typography className='titles'>
-                    Select type of Sort :
+                    Select size of Array :
                 </Typography>
                 <Typography className='titles'>
-                    Select size of array :
+                    Select type of VisualSort :
                 </Typography>
             </div>
             <br />

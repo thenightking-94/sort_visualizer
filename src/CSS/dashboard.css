@@ -30,3 +30,8 @@
 .baseline {
   align-items: flex-end !important;
 }
+@media only screen and (max-width: 760px) {
+  #paper {
+    width: 5px;
+  }
+}
