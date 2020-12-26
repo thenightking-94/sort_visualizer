@@ -10,7 +10,7 @@ const Dashboard = () => {
     let [visual, setvisual] = useState('');
 
     useEffect(() => {
-        //more concrete checking added for extra cushion
+        //more concrete checking added for extra cushion, kind of an over kill
         if (arraySize && !decideCompleted)
             setCompleted(true)
 
