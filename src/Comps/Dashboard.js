@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css';
 import { Card, Select, MenuItem, Typography } from '@material-ui/core';
 import RenderArray from './RenderArray';
-import { SentimentVeryDissatisfiedOutlined } from '@material-ui/icons';
+
 
 const Dashboard = () => {
     let [arraySize, setSize] = useState('');
@@ -38,6 +38,21 @@ const Dashboard = () => {
             <br />
             <br />
             <div className='flexRow'>
+
+                <Select
+                    value={arraySize}
+                    onChange={(e) => {
+                        setSize(e.target.value);
+                        if (decideCompleted)
+                            setCompleted(false);
+                    }}
+                    className='selecComp'
+                >
+                    <MenuItem value={20}>Twenty elements</MenuItem>
+                    <MenuItem value={35}>Thirty-five elements</MenuItem>
+                    <MenuItem value={45}>fourty-five elements</MenuItem>
+                </Select>
+                &nbsp;&nbsp;
                 <Select
                     value={visual}
                     onChange={(e) => {
@@ -52,20 +67,7 @@ const Dashboard = () => {
                     <MenuItem value={"Selection"}>Selection Sort</MenuItem>
 
                 </Select>
-                &nbsp;&nbsp;
-                <Select
-                    value={arraySize}
-                    onChange={(e) => {
-                        setSize(e.target.value);
-                        if (decideCompleted)
-                            setCompleted(false);
-                    }}
-                    className='selecComp'
-                >
-                    <MenuItem value={20}>Twenty elements</MenuItem>
-                    <MenuItem value={35}>Thirty-five elements</MenuItem>
-                    <MenuItem value={45}>fourty-five elements</MenuItem>
-                </Select>
+
             </div>
             <br />
             {
