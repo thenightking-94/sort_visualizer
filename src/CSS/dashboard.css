@@ -20,7 +20,12 @@
 }
 #paper {
   background-color: #45b1e7;
-  width: 15px;
+  width: 25px;
+  font-family: TitilliumBold !important;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  margin-left: 5px;
 }
 .baseline {
   align-items: flex-end !important;

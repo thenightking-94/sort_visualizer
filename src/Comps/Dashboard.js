@@ -2,23 +2,22 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css';
 import { Card, Select, MenuItem, Typography } from '@material-ui/core';
 import RenderArray from './RenderArray';
+import { SentimentVeryDissatisfiedOutlined } from '@material-ui/icons';
 
 const Dashboard = () => {
-    let [typeSort, setType] = useState('');
-    let [decideSort, setdecideSort] = useState(false);
-    let [decideSize, setdecideSize] = useState(false);
     let [arraySize, setSize] = useState('');
     let [decideCompleted, setCompleted] = useState(false);
+    let [visual, setvisual] = useState('');
 
     useEffect(() => {
-        if ((decideSort || decideSize) && !decideCompleted) {
-            //combining both checks with OR logic....ie if any one of them changes ---> for better flow for subsequent checking
-            setdecideSort(false)
-            setdecideSize(false)
+        //more concrete checking added for extra cushion
+        if (arraySize && !decideCompleted)
             setCompleted(true)
-        }
 
-    }, [decideSort, decideSize, decideCompleted])
+        if (visual)
+            localStorage.setItem('visual', visual)
+
+    }, [arraySize, decideCompleted, visual])
 
 
     return (
@@ -40,13 +39,9 @@ const Dashboard = () => {
             <br />
             <div className='flexRow'>
                 <Select
-                    value={typeSort}
+                    value={visual}
                     onChange={(e) => {
-                        setType(e.target.value);
-                        setdecideSort(true);
-                        if (decideCompleted)
-                            setCompleted(false);
-
+                        setvisual(e.target.value)
                     }}
                     className='selecComp'
                 >
@@ -62,7 +57,6 @@ const Dashboard = () => {
                     value={arraySize}
                     onChange={(e) => {
                         setSize(e.target.value);
-                        setdecideSize(true);
                         if (decideCompleted)
                             setCompleted(false);
                     }}
@@ -75,8 +69,8 @@ const Dashboard = () => {
             </div>
             <br />
             {
-                decideCompleted && arraySize && typeSort &&
-                <RenderArray size={arraySize} visual={typeSort} />
+                decideCompleted && arraySize &&
+                <RenderArray size={arraySize} />
             }
 
 
