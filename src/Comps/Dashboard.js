@@ -2,22 +2,18 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css';
 import { Card, Select, MenuItem, Typography, Button } from '@material-ui/core';
 import RenderArray from './RenderArray';
+import SortArray from './SortArray';
 
 
 const Dashboard = () => {
     let [arraySize, setSize] = useState('');
-    let [decideCompleted, setCompleted] = useState(false);
     let [visual, setvisual] = useState('');
+    let [startSort, setStartSort] = useState(false);
 
     useEffect(() => {
-        //more concrete checking added for extra cushion, kind of an over kill
-        if (arraySize && !decideCompleted)
-            setCompleted(true)
-
         if (visual)
             localStorage.setItem('visual', visual)
-
-    }, [arraySize, decideCompleted, visual])
+    }, [visual])
 
 
     return (
@@ -43,8 +39,9 @@ const Dashboard = () => {
                     value={arraySize}
                     onChange={(e) => {
                         setSize(e.target.value);
-                        if (decideCompleted)
-                            setCompleted(false);
+                        //setting it false for the next sorting session; and rendering the new updated array currently
+                        if (startSort)
+                            setStartSort(false)
                     }}
                     className='selecComp'
                 >
@@ -57,6 +54,8 @@ const Dashboard = () => {
                     value={visual}
                     onChange={(e) => {
                         setvisual(e.target.value)
+                        if (startSort)
+                            setStartSort(false)
                     }}
                     className='selecComp'
                 >
@@ -70,14 +69,21 @@ const Dashboard = () => {
 
             </div>
             <br />
+
             {
-                decideCompleted && arraySize &&
+                arraySize && !startSort &&
                 <RenderArray size={arraySize} />
             }
             {visual && arraySize &&
-                <Button className='sortBtn'>
-                    Start Sort
+                <Button className='sortBtn' onClick={() => {
+                    setStartSort(true)
+                }}>
+                    {startSort ? "Sorting In Progress" : "Start Sort"}
                 </Button>
+            }
+            {
+                startSort &&
+                <SortArray type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
 
 

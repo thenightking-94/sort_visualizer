@@ -54,8 +54,7 @@
 .sortBtn:hover {
   background-color: burlywood !important;
 }
-.sortBtn:focus {
+.sortBtn:focus,
+.sortBtn:active {
   background-color: chartreuse !important;
-  padding: 10px !important;
-  top: 44% !important;
 }

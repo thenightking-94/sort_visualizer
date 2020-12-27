@@ -1,0 +1,14 @@
+.textTypo {
+  font-family: TitilliumBold !important;
+  font-size: 22px !important;
+  color: black !important;
+}
+#paper_sort {
+  background-color: green;
+  width: 20px;
+  font-family: TitilliumBold !important;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  margin-left: 3px;
+}
