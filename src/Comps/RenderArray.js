@@ -28,8 +28,16 @@ export default function RenderArray(props) {
             localStorage.setItem('arraySize', Number(props.size));
             setarray(arr);
         }
-        else if (localStorage.getItem('arraySize') !== props.size) {
-            if (localStorage.getItem('arraySize') < props.size) {
+        else {
+            if (Number(localStorage.getItem('arraySize')) === props.size) {
+                let res = [];
+                res = JSON.parse(localStorage.getItem('array'));
+                res = res.map(item => (item))
+                localStorage.setItem('array', JSON.stringify(res));
+                localStorage.setItem('arraySize', Number(props.size));
+                setarray(res);
+            }
+            if (Number(localStorage.getItem('arraySize')) < props.size) {
                 let size = props.size - localStorage.getItem('arraySize');
                 let arr = [], count = (props.size - size), obj = {};
                 while (true) {
@@ -51,7 +59,7 @@ export default function RenderArray(props) {
                 localStorage.setItem('arraySize', Number(props.size));
                 setarray(res);
             }
-            if (localStorage.getItem('arraySize') > props.size) {
+            if (Number(localStorage.getItem('arraySize')) > props.size) {
                 let deduction = localStorage.getItem('arraySize') - props.size;
                 let res = [];
                 res = JSON.parse(localStorage.getItem('array'));
@@ -67,14 +75,7 @@ export default function RenderArray(props) {
                 localStorage.setItem('arraySize', Number(props.size));
                 setarray(arr);
             }
-        }
-        else if (localStorage.getItem('arraySize') === props.size) {
-            let res = [];
-            res = JSON.parse(localStorage.getItem('array'));
-            res = res.map(item => (item))
-            localStorage.setItem('array', JSON.stringify(res));
-            localStorage.setItem('arraySize', Number(props.size));
-            setarray(res);
+
         }
     }
 
@@ -84,7 +85,7 @@ export default function RenderArray(props) {
             <br />
             <div className='flexRow baseline'>
                 {array && array.map(item =>
-                    <p id={item.id} style={{ height: (item.value * 10) + 'px' }} id='paper' >{item.value}</p>
+                    <p key={item.id} id={item.id} style={{ height: (item.value * 10) + 'px' }} id='paper' >{item.value}</p>
                 )}
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css';
-import { Card, Select, MenuItem, Typography } from '@material-ui/core';
+import { Card, Select, MenuItem, Typography, Button } from '@material-ui/core';
 import RenderArray from './RenderArray';
 
 
@@ -21,13 +21,13 @@ const Dashboard = () => {
 
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div >
             <Card className='header flexRow'>
                 Data Visualizer
             </Card>
             <br />
             <br />
-            <div className='flexRow'>
+            <div className='flexRow optimizeSpace' >
                 <Typography className='titles'>
                     Select size of Array :
                 </Typography>
@@ -74,7 +74,11 @@ const Dashboard = () => {
                 decideCompleted && arraySize &&
                 <RenderArray size={arraySize} />
             }
-
+            {visual && arraySize &&
+                <Button className='sortBtn'>
+                    Start Sort
+                </Button>
+            }
 
 
         </div>
