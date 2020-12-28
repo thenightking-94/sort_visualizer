@@ -56,12 +56,14 @@ export default function SortBubble(props) {
                         elm.style.backgroundColor = "#e88d14";
                     }
                 }
-                //renew array after each swap
+                //renewing array after each swap and storing it in state
                 setprocessedArray(res)
                 sethasStarted(true)
+                //breaking away from inner loop after any swap on initial/renewed array
                 if (swap)
                     break;
             }
+            //breaking away from outer loop after any swap on initial/renewed array
             if (swap)
                 break;
         }

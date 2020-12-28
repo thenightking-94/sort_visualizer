@@ -10,7 +10,7 @@ export default function RenderArray(props) {
         renderBasic();
     }, [])
 
-    
+
     useEffect(() => {
         renderBasic();
     }, [props.size])
@@ -18,7 +18,7 @@ export default function RenderArray(props) {
 
 
     const renderBasic = () => {
-      
+
         if (!localStorage.getItem('arraySize')) {
             let size = props.size;
             let arr = [], count = 0, obj = {};
@@ -94,7 +94,7 @@ export default function RenderArray(props) {
             <br />
             {
                 array &&
-                <Button id='generateBtn' onClick={() => {
+                <Button className='generateBtn' onClick={() => {
                     localStorage.removeItem('arraySize');
                     renderBasic();
                 }}>
