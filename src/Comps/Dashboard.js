@@ -83,8 +83,8 @@ const Dashboard = () => {
                 </Button>
             }
             {
-                startSort &&
-                <SortArray sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+                startSort && visual === 'Bubble' &&
+                < SortArray sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
 
 
