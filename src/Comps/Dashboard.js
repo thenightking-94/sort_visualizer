@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css';
 import { Card, Select, MenuItem, Typography, Button } from '@material-ui/core';
 import RenderArray from './RenderArray';
-import SortArray from './SortArray';
+import SortBubble from './SortBubble';
 
 
 const Dashboard = () => {
@@ -84,7 +84,7 @@ const Dashboard = () => {
             }
             {
                 startSort && visual === 'Bubble' &&
-                < SortArray sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+                < SortBubble sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
 
 
