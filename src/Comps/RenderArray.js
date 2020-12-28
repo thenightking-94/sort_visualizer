@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import '../CSS/dashboard.css';
 
@@ -9,7 +10,15 @@ export default function RenderArray(props) {
         renderBasic();
     }, [])
 
+    
+    useEffect(() => {
+        renderBasic();
+    }, [props.size])
+
+
+
     const renderBasic = () => {
+      
         if (!localStorage.getItem('arraySize')) {
             let size = props.size;
             let arr = [], count = 0, obj = {};
@@ -83,9 +92,18 @@ export default function RenderArray(props) {
         <div>
             <br />
             <br />
+            {
+                array &&
+                <Button id='generateBtn' onClick={() => {
+                    localStorage.removeItem('arraySize');
+                    renderBasic();
+                }}>
+                    Generate Different Array
+                </Button>
+            }
             <div className='flexRow baseline'>
                 {array && array.map(item =>
-                    <p key={item.id} id={item.id} style={{ height: (item.value * 10) + 'px' }} id='paper' >{item.value}</p>
+                    <p key={item.id} id={item.id} style={{ height: (item.value * 10) + 'px' }} className='paper' >{item.value}</p>
                 )}
             </div>
         </div>

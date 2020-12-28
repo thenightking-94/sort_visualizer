@@ -26,7 +26,7 @@
   text-align: left;
   color: #45b1e7;
 }
-#paper {
+.paper {
   background-color: #45b1e7;
   width: 20px;
   font-family: TitilliumBold !important;
@@ -39,7 +39,7 @@
   align-items: flex-end !important;
 }
 @media only screen and (max-width: 760px) {
-  #paper {
+  .paper {
     width: 5px;
   }
 }
@@ -57,4 +57,12 @@
 .sortBtn:focus,
 .sortBtn:active {
   background-color: chartreuse !important;
+}
+#generateBtn {
+  position: fixed !important;
+  top: 50% !important;
+  left: 5% !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  background-color: #d6e417 !important;
 }

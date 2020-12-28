@@ -10,6 +10,7 @@ const Dashboard = () => {
     let [visual, setvisual] = useState('');
     let [startSort, setStartSort] = useState(false);
 
+
     useEffect(() => {
         if (visual)
             localStorage.setItem('visual', visual)
@@ -83,7 +84,7 @@ const Dashboard = () => {
             }
             {
                 startSort &&
-                <SortArray type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+                <SortArray sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
 
 
