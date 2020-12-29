@@ -8,7 +8,6 @@ export default function SortSelection(props) {
     const [sorting, setsorting] = useState(false);
     const [processedArray, setprocessedArray] = useState([]);
     const [hasStarted, sethasStarted] = useState(false)
-    const [finished, setfinished] = useState(false);
     const unsorted = useRef();
     const timer = useRef();
 
@@ -66,47 +65,37 @@ export default function SortSelection(props) {
                 elm.style.backgroundColor = "#e88d14";
             }
 
-            //renewing array after each swap and storing it in state for re-rendering purpose
-            setprocessedArray(res)
-            sethasStarted(true)
-
-            //breaking away from outer loop after any swap on initial/renewed array so that the next render-with-updated-array occurs at next swapper() call
-            if (swap)
-                break;
-        }
-
-
-    }
-
-    useEffect(() => {
-        if (processedArray.length === unsorted.current.length && !finished) {
+            //in place checking for array-equality designed
             let checkArray = [...unsorted.current];
             let values_from_ref = checkArray.map(item => item.value);
             values_from_ref.sort(function (a, b) { return (a - b) });
-            let values_from_processedArray = processedArray.map(item => item.value);
+            let values_from_processedArray = res.map(item => item.value);
             let counter = 0;
             for (let i = 0; i < values_from_ref.length; i++) {
                 if (values_from_ref[i] === values_from_processedArray[i])
                     counter++;
             }
+            //if array is sorted then no-need to update any updated-processed array
             if (counter === checkArray.length && counter > 0) {
+                let el = document.querySelectorAll("p[class='paper_sort']");
+                if (el) {
+                    for (let i = 0; i < el.length; i++)
+                        el[i].style.backgroundColor = '#4A5DFC';
+                }
                 clearInterval(timer.current);
-                setfinished(true)
             }
-        }
-        if (finished) {
-            let el = document.querySelectorAll("p[class='paper_sort']");
-            if (el) {
-                for (let i = 0; i < el.length; i++)
-                    el[i].style.backgroundColor = '#4A5DFC';
+            //else if array is still not sorted then renewing array after each swap and storing it in state for re-rendering purpose
+            else {
+                setprocessedArray(res)
+                sethasStarted(true)
             }
+
+
+            //breaking away from outer loop after any swap on initial/renewed array so that the next render-with-updated-array occurs at next swapper() call
+            if (swap)
+                break;
         }
-        if (processedArray.length > 0)
-            console.log([...(processedArray.map(item => item.value))])
-
-
-
-    }, [processedArray, finished])
+    }
 
     return (
         <div>
