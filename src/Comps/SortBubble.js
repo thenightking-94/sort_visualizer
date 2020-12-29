@@ -44,11 +44,14 @@ export default function SortBubble(props) {
         res = processedArray.length > 0 ? processedArray : [...unsorted.current];
         for (i = 0; i < res.length; i++) {
             for (j = i + 1; j < res.length; j++) {
+
                 if (res[i].value > res[j].value) {
+
                     temp = res[i].value;
                     res[i].value = res[j].value;
                     res[j].value = temp;
                     swap = true;
+
                     let el = document.querySelector("p[id=" + CSS.escape(i) + "]");
                     let elm = document.querySelector("p[id=" + CSS.escape(j) + "]");
                     if (el && elm) {
