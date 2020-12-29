@@ -56,7 +56,7 @@ export default function SortBubble(props) {
                         elm.style.backgroundColor = "#e88d14";
                     }
                 }
-                //renewing array after each swap and storing it in state
+                //renewing array after each swap and storing it in state for re-rendering purpose
                 setprocessedArray(res)
                 sethasStarted(true)
                 //breaking away from inner loop after any swap on initial/renewed array
@@ -72,13 +72,15 @@ export default function SortBubble(props) {
     useEffect(() => {
         if (processedArray.length === unsorted.current.length && !finished) {
             let checkArray = [...unsorted.current];
-            checkArray.sort(function (a, b) { return (a - b) });
-            let bool = false;
-            for (let i = 0; i < checkArray.length; i++) {
-                if (checkArray[i] !== processedArray[i])
-                    bool = true;
+            let values_from_ref = checkArray.map(item => item.value);
+            values_from_ref.sort(function (a, b) { return (a - b) });
+            let values_from_processedArray = processedArray.map(item => item.value);
+            let counter = 0;
+            for (let i = 0; i < values_from_ref.length; i++) {
+                if (values_from_ref[i] === values_from_processedArray[i])
+                    counter++;
             }
-            if (!bool) {
+            if (counter === checkArray.length && counter > 0) {
                 clearInterval(timer.current);
                 setfinished(true)
             }
@@ -87,10 +89,9 @@ export default function SortBubble(props) {
             let el = document.querySelectorAll("p[class='paper_sort']");
             if (el) {
                 for (let i = 0; i < el.length; i++)
-                    el[i].style.backgroundColor = 'green';
+                    el[i].style.backgroundColor = '#008085';
             }
         }
-
     }, [processedArray, finished])
 
     return (
