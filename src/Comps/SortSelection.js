@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../CSS/dashboard.css';
 import '../CSS/sorting.css';
 
-export default function SortBubble(props) {
+export default function SortSelection(props) {
     const [array, setarray] = useState([]);
     const [sorting, setsorting] = useState(false);
     const [processedArray, setprocessedArray] = useState([]);
@@ -40,36 +40,42 @@ export default function SortBubble(props) {
     }, [sorting])
 
     const swapper = () => {
-        let i, j, res = [], temp, swap = false;
+
+        let i, j, res = [], temp, min_index, swap = false;
         res = processedArray.length > 0 ? processedArray : [...unsorted.current];
-        for (i = 0; i < res.length; i++) {
+        for (i = 0; i < res.length - 1; i++) {
+
+            min_index = i;
+
             for (j = i + 1; j < res.length; j++) {
 
-                if (res[i].value > res[j].value) {
-
-                    temp = res[i].value;
-                    res[i].value = res[j].value;
-                    res[j].value = temp;
+                if (res[min_index].value > res[j].value) {
+                    min_index = j;
                     swap = true;
-
-                    let el = document.querySelector("p[id=" + CSS.escape(i) + "]");
-                    let elm = document.querySelector("p[id=" + CSS.escape(j) + "]");
-                    if (el && elm) {
-                        el.style.backgroundColor = "#FEDB5E";
-                        elm.style.backgroundColor = "#e88d14";
-                    }
                 }
-                //renewing array after each swap and storing it in state for re-rendering purpose
-                setprocessedArray(res)
-                sethasStarted(true)
-                //breaking away from inner loop after any swap on initial/renewed array so that the next render-with-updated-array occurs at next swapper() call
-                if (swap)
-                    break;
             }
+
+            temp = res[min_index].value;
+            res[min_index].value = res[i].value;
+            res[i].value = temp;
+
+            let el = document.querySelector("p[id=" + CSS.escape(min_index) + "]");
+            let elm = document.querySelector("p[id=" + CSS.escape(i) + "]");
+            if (el && elm) {
+                el.style.backgroundColor = "#FEDB5E";
+                elm.style.backgroundColor = "#e88d14";
+            }
+
+            //renewing array after each swap and storing it in state for re-rendering purpose
+            setprocessedArray(res)
+            sethasStarted(true)
+
             //breaking away from outer loop after any swap on initial/renewed array so that the next render-with-updated-array occurs at next swapper() call
             if (swap)
                 break;
         }
+
+
     }
 
     useEffect(() => {
@@ -95,6 +101,11 @@ export default function SortBubble(props) {
                     el[i].style.backgroundColor = '#4A5DFC';
             }
         }
+        if (processedArray.length > 0)
+            console.log([...(processedArray.map(item => item.value))])
+
+
+
     }, [processedArray, finished])
 
     return (

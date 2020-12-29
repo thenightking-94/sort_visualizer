@@ -3,6 +3,7 @@ import '../CSS/dashboard.css';
 import { Card, Select, MenuItem, Typography, Button } from '@material-ui/core';
 import RenderArray from './RenderArray';
 import SortBubble from './SortBubble';
+import SortSelection from './SortSelection';
 
 
 const Dashboard = () => {
@@ -86,7 +87,10 @@ const Dashboard = () => {
                 startSort && visual === 'Bubble' &&
                 < SortBubble sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
-
+            {
+                startSort && visual === 'Selection' &&
+                <SortSelection sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+            }
 
         </div>
     )
