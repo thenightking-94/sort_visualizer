@@ -10,12 +10,20 @@ const Dashboard = () => {
     let [arraySize, setSize] = useState('');
     let [visual, setvisual] = useState('');
     let [startSort, setStartSort] = useState(false);
+    let [nameChange, setName] = useState(false);
 
 
     useEffect(() => {
         if (visual)
             localStorage.setItem('visual', visual)
     }, [visual])
+
+    const changeName = (data) => {
+        if (data)
+            setName(true);
+        if (!data)
+            setName(false)
+    }
 
 
     return (
@@ -29,6 +37,7 @@ const Dashboard = () => {
                 <Typography className='titles'>
                     Select size of Array :
                 </Typography>
+                &nbsp;&nbsp;&nbsp;
                 <Typography className='titles'>
                     Select type of VisualSort :
                 </Typography>
@@ -80,16 +89,16 @@ const Dashboard = () => {
                 <Button className='sortBtn' onClick={() => {
                     setStartSort(true)
                 }}>
-                    {startSort ? "Sorting In Progress" : "Start Sort"}
+                    {startSort ? (nameChange ? "Array is Sorted" : "Sorting In Progress") : "Start Sort"}
                 </Button>
             }
             {
                 startSort && visual === 'Bubble' &&
-                < SortBubble sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+                < SortBubble childToParentDataCallback={changeName} sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
             {
                 startSort && visual === 'Selection' &&
-                <SortSelection sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+                <SortSelection childToParentDataCallback={changeName} sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
 
         </div>

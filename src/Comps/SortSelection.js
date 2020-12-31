@@ -13,6 +13,7 @@ export default function SortSelection(props) {
     const timer = useRef();
 
     useEffect(() => {
+        props.childToParentDataCallback(false);
         let ObjectArray = props.array;
         setarray(ObjectArray)
         setTimeout(() => {
@@ -53,7 +54,7 @@ export default function SortSelection(props) {
         }
         //if array is sorted then no-need to update any updated-processed array
         if (counter === checkArray.length && counter > 0) {
-            //console.log('run')
+            props.childToParentDataCallback(true);
             clearInterval(timer.current);
             let el = document.querySelectorAll("p[class='paper_sort']");
             if (el) {

@@ -12,3 +12,9 @@
   text-align: center;
   margin-left: 3px;
 }
+@media only screen and (max-width: 760px) {
+  .paper_sort {
+    width: 5px !important;
+    color: black;
+  }
+}

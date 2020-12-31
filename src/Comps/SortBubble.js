@@ -13,6 +13,7 @@ export default function SortBubble(props) {
     const timer = useRef();
 
     useEffect(() => {
+        props.childToParentDataCallback(false);
         let ObjectArray = props.array;
         setarray(ObjectArray)
         setTimeout(() => {
@@ -89,6 +90,7 @@ export default function SortBubble(props) {
             }
         }
         if (finished) {
+            props.childToParentDataCallback(true);
             let el = document.querySelectorAll("p[class='paper_sort']");
             if (el) {
                 for (let i = 0; i < el.length; i++)
