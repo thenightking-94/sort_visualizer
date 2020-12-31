@@ -53,7 +53,7 @@ export default function SortSelection(props) {
         }
         //if array is sorted then no-need to update any updated-processed array
         if (counter === checkArray.length && counter > 0) {
-            console.log('run')
+            //console.log('run')
             clearInterval(timer.current);
             let el = document.querySelectorAll("p[class='paper_sort']");
             if (el) {
