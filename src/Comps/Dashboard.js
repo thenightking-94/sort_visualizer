@@ -4,6 +4,7 @@ import { Card, Select, MenuItem, Typography, Button } from '@material-ui/core';
 import RenderArray from './RenderArray';
 import SortBubble from './SortBubble';
 import SortSelection from './SortSelection';
+import SortInsertion from './SortInsertion';
 
 
 const Dashboard = () => {
@@ -100,6 +101,10 @@ const Dashboard = () => {
             {
                 startSort && visual === 'Selection' &&
                 <SortSelection childToParentDataCallback={changeName} sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
+            }
+            {
+                startSort && visual === 'Insertion' &&
+                <SortInsertion childToParentDataCallback={changeName} sizeArray={arraySize} type={visual} array={JSON.parse(localStorage.getItem('array'))} />
             }
 
         </div>
