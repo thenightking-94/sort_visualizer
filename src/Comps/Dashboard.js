@@ -28,7 +28,9 @@ const Dashboard = () => {
 
     return (
         <div >
-            <Card className='header flexRow'>
+            <Card onClick={() => {
+                window.location.assign('/')
+            }} className='header flexRow'>
                 Data Visualizer
             </Card>
             <br />

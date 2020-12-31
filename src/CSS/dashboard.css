@@ -12,6 +12,7 @@
   color: #45b1e7 !important;
   box-shadow: 5px 8px 10px #888 !important;
   border-right: 5px solid white;
+  cursor: pointer;
 }
 .selecComp {
   width: 40%;
