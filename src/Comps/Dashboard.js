@@ -74,7 +74,6 @@ const Dashboard = () => {
                 >
                     <MenuItem value={"Bubble"}>Bubble Sort</MenuItem>
                     <MenuItem value={"Insertion"}>Insertion Sort</MenuItem>
-                    <MenuItem value={"Quick"}>Quick Sort</MenuItem>
                     <MenuItem value={"Merge"}>Merge Sort</MenuItem>
                     <MenuItem value={"Selection"}>Selection Sort</MenuItem>
 
