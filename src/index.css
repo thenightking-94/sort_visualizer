@@ -20,6 +20,16 @@
 .body {
   width: 100%;
   font-family: Titillium !important;
+  height: 100vh !important;
+}
+
+@media only screen and (max-width:768px){
+  .body{
+    height: 130vh !important;
+  }
+  .mobileAdjuster{
+    margin-top: 70px !important;
+  }
 }
 
 @font-face {

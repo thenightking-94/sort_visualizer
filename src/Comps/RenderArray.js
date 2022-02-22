@@ -101,7 +101,7 @@ export default function RenderArray(props) {
                     Generate Different Array
                 </Button>
             }
-            <div className='flexRow baseline'>
+            <div className='flexRow baseline mobileAdjuster'>
                 {array && array.map(item =>
                     <p key={item.id} id={item.id} style={{ height: (item.value * 10) + 'px' }} className='paper' >{item.value}</p>
                 )}

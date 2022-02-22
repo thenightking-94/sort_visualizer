@@ -112,7 +112,7 @@ export default function SortSelection(props) {
         <div>
             <br />
             <br />
-            <div className='flexRow baseline'>
+            <div className='flexRow baseline mobileAdjuster'>
 
                 {array && !sorting && array.map(item =>
                     <p key={item.id} id={item.id} style={{ height: (item.value * 10) + 'px' }} className='paper' >{item.value}</p>

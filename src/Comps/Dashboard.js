@@ -59,9 +59,9 @@ const Dashboard = () => {
                     }}
                     className='selecComp'
                 >
-                    <MenuItem value={20}>Twenty elements</MenuItem>
-                    <MenuItem value={35}>Thirty-five elements</MenuItem>
-                    <MenuItem value={45}>fourty-five elements</MenuItem>
+                    <MenuItem value={window.innerWidth > `${768}` ? 20 : 10}>{window.innerWidth > `${768}` ? 'Twenty elements' : 'Ten elements'}</MenuItem>
+                    <MenuItem value={window.innerWidth > `${768}` ? 35 : 15}>{window.innerWidth > `${768}` ? 'Thirty-five elements' : 'Fifteen elements'}</MenuItem>
+                    <MenuItem value={window.innerWidth > `${768}` ? 45 : 20}>{window.innerWidth > `${768}` ? 'fourty-five elements' : 'Twenty elements'}</MenuItem>
                 </Select>
                 &nbsp;&nbsp;
                 <Select
@@ -75,7 +75,6 @@ const Dashboard = () => {
                 >
                     <MenuItem value={"Bubble"}>Bubble Sort</MenuItem>
                     <MenuItem value={"Insertion"}>Insertion Sort</MenuItem>
-                    <MenuItem value={"Merge"}>Merge Sort</MenuItem>
                     <MenuItem value={"Selection"}>Selection Sort</MenuItem>
 
                 </Select>

@@ -41,11 +41,16 @@
 }
 @media only screen and (max-width: 760px) {
   .paper {
-    width: 5px;
+    width: 5px !important;
     color: black;
   }
   .titles {
     font-size: 14px !important;
+  }
+  .sortBtn,
+  .generateBtn {
+    font-weight: 200 !important;
+    font-size: 12px !important;
   }
 }
 .sortBtn {

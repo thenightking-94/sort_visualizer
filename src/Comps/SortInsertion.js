@@ -9,7 +9,7 @@ export default function SortInsertion(props) {
     const [processedArray, setprocessedArray] = useState([]);
     const [hasStarted, sethasStarted] = useState(false)
     const [incrementer, setincrementer] = useState(0);
-    const unsorted = useRef();
+    const unsorted = useRef();//ref Box-model utilized
     const timer = useRef();
 
     useEffect(() => {
@@ -107,7 +107,7 @@ export default function SortInsertion(props) {
         <div>
             <br />
             <br />
-            <div className='flexRow baseline'>
+            <div className='flexRow baseline mobileAdjuster'>
 
                 {array && !sorting && array.map(item =>
                     <p key={item.id} id={item.id} style={{ height: (item.value * 10) + 'px' }} className='paper' >{item.value}</p>
